@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Quiz</title>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <ul>
+        <li><a href="index.html">Home</a> </li>
+        <li><a href="photoapp.html">Photo App</a> </li>
+        <li><a href="gallery.html" >Gallery</a> </li>
+        <li><a href="quiz.html" id="active">Quiz</a> </li>
+        </ul>
+        </nav>
+    <h1>Quiz</h1>
+
+    <p>This quiz will test how much you know about dinosaurs.
+    </p>
+    <div id="quiz">
+        <form name="Quiz">
+            
+            <label for="name">Enter your name</label>
+            <input id="name" type="text" name="name">
+            <br><br>
+            <fieldset>
+            <legend>What is the largest land dinosaur</legend>
+            <input id="Maraapunisaurus" type="radio" name="largest" value="Maraapunisaurus">
+            <label for="Maraapunisaurus">Maraapunisaurus</label>
+            <br>
+            <input id="Argentinosaurus" type="radio" name="largest" value="Argentinosaurus">
+            <label for="Argentinosaurus">Argentinosaurus</label>
+            <br>
+            <input id="Supersaurus" type="radio" name="largest" value="Supersaurus">
+            <label for="Supersaurus">Supersaurus</label>
+            <br>
+            <input id="Diplodocus" type="radio" name="largest" value="Diplodocus">
+            <label for="Diplodocus">Diplodocus</label>
+        </fieldset>
+        <br>
+    <fieldset>
+            <legend>In which geological period did the Tyrannasaurus Rex live?</legend>
+            <input id="Cretaceous" type="radio" name="period" value="Cretaceous">
+            <label for="Cretaceous">Cretaceous</label>
+            <br>
+            <input id="Jurassic" type="radio" name="period" value="Jurassic">
+            <label for="Jurassic">Jurassic</label>
+            <br>
+            <input id="Triassic" type="radio" name="period" value="Triassic">
+            <label for="Triassic">Triassic</label>
+            <br>
+            <input id="Permian" type="radio" name="period" value="Permian">
+            <label for="Permian">Permian</label>
+        </fieldset>
+        </form>
+    </div>
+    <br>
+    <button type="button" onclick="checkAnswers()">Submit</button>
+ </body>
+
+</html>

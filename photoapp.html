@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-gb">
+    <head>
+        <title>Photo App</title>
+        <link rel="icon" type="image/png" href="t-rex-icon.png">
+        <link rel="stylesheet" href="style.css">
+        <meta charset="UTF-8">
+        <meta name="description" content="T rex photo app">
+        <meta author="Claire Wicher">
+        <meta keywords="dinosaur, t rex, photo app">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+    <header>
+        <nav>
+            <ul>
+            <li><a href="index.html">Home</a> </li>
+            <li><a href="photoapp.html" id="active">Photo App</a> </li>
+            <li><a href="gallery.html" >Gallery</a> </li>
+            <li><a href="quiz.html">Quiz</a> </li>
+            </ul>
+            </nav>
+        <h1><em>Tyrannosaurus rex</em> Photo App</h1>
+        <p>Welcome to my Tyrannosaurus rex photo app where you can learn interesting things about this awesome dinosaur and submit photos of your favourite T-rex.</p>
+    </header>
+    <main>
+    <section>
+        <h3>Facts about the T-rex</h3>
+        <p>Here are some interesting facts about the T-rex</p>
+            <ul>
+                <li>Has very bad breath</li>
+                <li>Females bigger than males</li>
+                <li>Name means "tyrant lizard king"</li>
+            </ul>
+        <img src="t-rex.jpg"  alt="image of a t-rex from Jurassic Park" width="100%">
+    </section>
+    <section>
+        <h3>Top three dinosaurs</h3>
+        <p>Here are my top three dinosaurs</p>
+            <ol>
+                <li>T-rex</li>
+                <li>Velociraptor</li>
+                <li>Dilophosaurus</li>
+            </ol>
+        <img src="velociraptor.jpg" alt="image of velociraptors in a kitchen hunting children from the film Jurassic Park" width="100%">
+    </section>
+        <p>For more information about the T-rex please visit the <a href="https://en.wikipedia.org/wiki/Tyrannosaurus">Tyrannosaurus Wikipedia page.</a></p>
+    <section>
+        <h2>Submit your T-rex pictures here</h2>
+        <form name="app" id="app">
+            <fieldset>
+                <legend>What gender is your T-rex?</legend>
+                <input id="male" type="radio" name="gender" value="male">
+                <label for="male">Male</label>
+                <br>
+                <input id="female" type="radio" name="gender" value="female">
+                <label for="female">Female</label>
+                <br>
+                <input id="non-binary" type="radio" name="gender" value="non-binary">
+                <label for="non-binary">Non-binary</label>
+                <br>
+                <input id="non-disclose" type="radio" name="gender" value="non-disclose">
+                <label for="non-disclose">Prefer not to disclose</label>
+            </fieldset>
+            <fieldset>
+                <legend>What is your T-rex's personality?</legend> 
+                <input id="hangry" type="checkbox" name="personality" value="hangry">
+                <label for="hangry">Hangry</label>
+                <br>
+                <input id="neurotic" type="checkbox" name="personality" value="neurotic">
+                <label for="neurotic">Neurotic</label>
+                <br>
+                <input id="charismatic" type="checkbox" name="personality" value="charismatic">
+                <label for="charismatic">Charismatic</label>
+                <br>
+                <input id="forgetful" type="checkbox" name="personality" value="forgetful">
+                <label for="forgetful">Forgetful</label>
+            </fieldset>
+                <label for="url">Enter your photo URL</label>
+                <input id="url" type="text" name="photourl">
+                <input id="button" type="button" value="Submit" onclick="saveFile()">
+        </form>
+    </section>
+    </main>
+    <footer>
+        <p>Copyright Claire Wicher 2023</p>
+    </footer>
+    </body>
+</html>
+
+<script>
+    let saveFile = () => {
+
+        //This is setting the checkboxes as an array
+        var form = document.getElementById('app');
+        var myArray = [];
+            form.querySelectorAll('input').forEach(function (input) {
+                if(input.type === 'checkbox'  && input.checked) {
+                    myArray.push(input.value)
+                }
+            })
+
+        form = document.forms.app.elements;
+        const gender = form.gender.value;
+        const personality = myArray;
+        const link = form.photourl.value;
+
+        // This variable stores all the data.
+        let data = 
+            '\r Gender?: ' + gender + ' \r\n ' + 
+            'Personality: ' + personality + ' \r\n ' + 
+            'Link: ' + link 
+        
+        // Convert the text to BLOB.
+        const textToBLOB = new Blob([data], { type: 'text/plain' });
+        const sFileName = "filename";	   // The file to save the data.
+
+        let newLink = document.createElement("a");
+        newLink.download = sFileName;
+        newLink.innerHTML = "Download File:";
+
+        if (window.webkitURL != null) {
+            newLink.href = window.webkitURL.createObjectURL(textToBLOB);
+        }
+        else {
+            newLink.href = window.URL.createObjectURL(textToBLOB);
+            newLink.style.display = "none";
+            document.body.appendChild(newLink);
+        }
+
+        newLink.click(); 
+    }
+</script>

@@ -1,0 +1,3 @@
+ Gender?: male 
+ Personality: hangry 
+ Link: https://en.wikipedia.org/wiki/Tyrannosaurus
